@@ -158,9 +158,9 @@ export default function ReservationPage({
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="space-y-4 w-full max-w-md px-4">
-          <Skeleton className="h-10 w-40 mx-auto rounded-xl" />
-          <Skeleton className="h-96 w-full rounded-2xl" />
-          <Skeleton className="h-11 w-40 mx-auto rounded-xl" />
+          <Skeleton className="h-10 w-40 mx-auto rounded-lg" />
+          <Skeleton className="h-96 w-full rounded-[12px]" />
+          <Skeleton className="h-10 w-40 mx-auto rounded-lg" />
         </div>
       </div>
     );
@@ -170,13 +170,13 @@ export default function ReservationPage({
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center max-w-sm px-4">
-          <div className="w-16 h-16 mx-auto mb-4 bg-[#fef1f0] rounded-full flex items-center justify-center shadow-inner">
-            <svg className="w-8 h-8 text-[#ff3b30]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="w-16 h-16 mx-auto mb-4 bg-[#ffdad6] rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-[#93000a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
           </div>
-          <h2 className="text-lg font-semibold text-[#1d1d1f] mb-1">Reservation Not Found</h2>
-          <p className="text-sm text-[#8e8e93] mb-4">This reservation may have expired or the link is invalid.</p>
+          <h2 className="text-lg font-['Playfair_Display'] font-semibold text-foreground mb-1">Reservation Not Found</h2>
+          <p className="text-sm text-muted-foreground mb-4">This reservation may have expired or the link is invalid.</p>
           <Button onClick={() => router.push("/")} variant="outline">
             Back to products
           </Button>
@@ -195,20 +195,20 @@ export default function ReservationPage({
         onDismiss={() => setToast(null)}
       />
 
-      <header className="border-b border-[#d1d1d6] bg-white/80 backdrop-blur-sm">
-        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center gap-3">
+      <header className="border-b border-border bg-white/70 backdrop-blur-xl sticky top-0 z-40">
+        <div className="max-w-3xl mx-auto px-5 py-4 flex items-center gap-3">
           <button
             onClick={() => router.push("/")}
-            className="w-9 h-9 rounded-full bg-[#f2f2f7] hover:bg-[#e8e8ed] flex items-center justify-center transition-colors"
+            className="w-9 h-9 rounded-lg bg-secondary hover:bg-[#e4e2dd] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
             aria-label="Back"
           >
-            <svg className="w-4 h-4 text-[#8e8e93]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <div>
-            <h1 className="text-lg font-bold text-[#1d1d1f] tracking-tight">Reservation</h1>
-            <p className="text-[10px] text-[#8e8e93] font-mono uppercase tracking-wider">
+            <h1 className="text-lg font-['Playfair_Display'] font-semibold text-foreground tracking-tight">Reservation</h1>
+            <p className="text-[10px] font-semibold text-muted-foreground tracking-[0.1em] uppercase">
               #{reservation.id.slice(0, 8)}
             </p>
           </div>
@@ -216,12 +216,12 @@ export default function ReservationPage({
         </div>
       </header>
 
-      <main className="max-w-lg mx-auto px-4 py-10">
+      <main className="max-w-lg mx-auto px-5 py-10">
         <div
-          className="bg-card rounded-2xl border-2 border-[#d1d1d6] overflow-hidden shadow-lg shadow-black/[0.04]"
-          style={{ animation: "slide-up 0.4s ease-out" }}
+          className="bg-card rounded-[12px] border border-border overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.04)]"
+          style={{ animation: "slide-up 0.5s cubic-bezier(0.22,1,0.36,1)" }}
         >
-          <div className="p-6 space-y-6">
+          <div className="p-6 lg:p-8 space-y-8">
             {/* Countdown */}
             {isPending && (
               <div className="flex justify-center -mt-2">
@@ -235,10 +235,10 @@ export default function ReservationPage({
             {/* Stamp animation */}
             {stamped && (
               <div
-                className="absolute top-20 right-8 z-10"
-                style={{ animation: "stamp-in 0.5s ease-out both" }}
+                className="absolute top-24 right-10 z-10"
+                style={{ animation: "stamp-in 0.5s cubic-bezier(0.22,1,0.36,1) both" }}
               >
-                <div className="bg-[#34c759] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg -rotate-6 shadow-lg">
+                <div className="bg-success text-white text-xs font-semibold tracking-[0.1em] uppercase px-3 py-1 rounded-lg -rotate-3 shadow-lg">
                   Confirmed
                 </div>
               </div>
@@ -247,19 +247,19 @@ export default function ReservationPage({
             {/* Product info */}
             <div className="flex items-start justify-between">
               <div className="flex-1 min-w-0">
-                <h2 className="text-xl font-bold text-[#1d1d1f] leading-tight">
+                <h2 className="text-2xl font-['Playfair_Display'] font-semibold text-foreground leading-tight">
                   {reservation.productName}
                 </h2>
-                <div className="flex items-center gap-2 mt-1">
-                  <Badge variant="warm" className="text-[10px] font-mono">
+                <div className="flex items-center gap-2 mt-1.5">
+                  <Badge variant="warm" className="text-[10px]">
                     {reservation.productSku}
                   </Badge>
-                  <span className="text-xs text-[#8e8e93]">
+                  <span className="text-xs text-muted-foreground">
                     &middot; {reservation.warehouseName}
                   </span>
                 </div>
               </div>
-              <span className="text-2xl font-bold text-[#1d1d1f] shrink-0 ml-3">
+              <span className="text-2xl font-semibold text-foreground shrink-0 ml-4">
                 ${Number(reservation.productPrice).toFixed(2)}
               </span>
             </div>
@@ -268,7 +268,7 @@ export default function ReservationPage({
             <StatusTimeline status={reservation.status} />
 
             {/* Detail rows */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               <DetailItem label="Quantity" value={`${reservation.quantity}`} />
               <DetailItem label="Total" value={`$${(Number(reservation.productPrice) * reservation.quantity).toFixed(2)}`} />
               <DetailItem label="Warehouse" value={reservation.warehouseName} />
@@ -277,15 +277,15 @@ export default function ReservationPage({
 
             {/* Past status info */}
             {reservation.status === "CONFIRMED" && reservation.confirmedAt && (
-              <div className="bg-[#e8f8ee] border border-[#b7ebc5] rounded-xl p-4 flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#b7ebc5] rounded-full flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-[#1a7d36]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="bg-[#e8f2ea] border border-[#c4d9c9] rounded-lg p-4 flex items-center gap-3">
+                <div className="w-9 h-9 bg-[#c4d9c9] rounded-full flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4 text-[#3d6b4a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#1a7d36]">Confirmed</p>
-                  <p className="text-xs text-[#1a7d36]/70">
+                  <p className="text-sm font-semibold text-[#3d6b4a]">Confirmed</p>
+                  <p className="text-xs text-[#3d6b4a]/70">
                     {new Date(reservation.confirmedAt).toLocaleString()}
                   </p>
                 </div>
@@ -293,17 +293,17 @@ export default function ReservationPage({
             )}
 
             {reservation.status === "RELEASED" && reservation.releasedAt && (
-              <div className="bg-[#f2f2f7] border border-[#d1d1d6] rounded-xl p-4 flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#e8e8ed] rounded-full flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-[#8e8e93]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="bg-muted border border-border rounded-lg p-4 flex items-center gap-3">
+                <div className="w-9 h-9 bg-[#e4e2dd] rounded-full flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#1d1d1f]">
+                  <p className="text-sm font-semibold text-foreground">
                     {reservation.releasedAt > reservation.expiresAt ? "Expired" : "Cancelled"}
                   </p>
-                  <p className="text-xs text-[#8e8e93]">
+                  <p className="text-xs text-muted-foreground">
                     {new Date(reservation.releasedAt).toLocaleString()}
                   </p>
                 </div>
@@ -313,7 +313,7 @@ export default function ReservationPage({
 
           {/* Actions */}
           {isPending ? (
-            <div className="p-4 bg-[#f2f2f7] flex gap-3">
+            <div className="p-6 lg:p-8 pt-0 flex gap-3">
               <Button
                 onClick={handleConfirm}
                 disabled={actionLoading}
@@ -337,7 +337,7 @@ export default function ReservationPage({
                 onClick={handleRelease}
                 disabled={actionLoading}
                 variant="outline"
-                className="flex-1 border-[#ff3b30]/30 text-[#ff3b30] hover:bg-[#fef1f0] hover:border-[#ff3b30]/50"
+                className="flex-1 border-[#ba1a1a]/40 text-[#ba1a1a] hover:bg-[#ffdad6] hover:border-[#ba1a1a]"
               >
                 {actionLoading ? (
                   <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -348,7 +348,7 @@ export default function ReservationPage({
               </Button>
             </div>
           ) : (
-            <div className="p-4">
+            <div className="p-6 lg:p-8 pt-0">
               <Button
                 onClick={() => router.push("/")}
                 variant="outline"
@@ -366,14 +366,14 @@ export default function ReservationPage({
 
 function StatusBadge({ status }: { status: string }) {
   const config: Record<string, { label: string; classes: string }> = {
-    PENDING: { label: "Pending", classes: "bg-[#fff0e0] text-[#9a3a00] border-[#ffd6b0]" },
-    CONFIRMED: { label: "Confirmed", classes: "bg-[#e8f8ee] text-[#1a7d36] border-[#b7ebc5]" },
-    RELEASED: { label: "Released", classes: "bg-[#f2f2f7] text-[#8e8e93] border-[#d1d1d6]" },
+    PENDING: { label: "Pending", classes: "bg-[#f5efe0] text-[#7a623a] border-[#ddd4be]" },
+    CONFIRMED: { label: "Confirmed", classes: "bg-[#e8f2ea] text-[#3d6b4a] border-[#c4d9c9]" },
+    RELEASED: { label: "Released", classes: "bg-[#f0eee9] text-[#4d463a] border-[#d0c5b5]" },
   };
 
   const c = config[status] || config.PENDING;
   return (
-    <span className={`ml-auto text-xs font-semibold px-3 py-1 rounded-full border ${c.classes}`}>
+    <span className={`ml-auto text-[10px] font-semibold tracking-[0.1em] uppercase px-3 py-1 rounded-full border ${c.classes}`}>
       {c.label}
     </span>
   );
@@ -389,7 +389,7 @@ function StatusTimeline({ status }: { status: string }) {
   const currentIdx = steps.findIndex((s) => s.key === status);
 
   return (
-    <div className="flex items-center justify-between px-2">
+    <div className="flex items-center justify-between">
       {steps.map((step, i) => {
         const isPast = i <= currentIdx;
         const Icon = i === 0
@@ -400,29 +400,29 @@ function StatusTimeline({ status }: { status: string }) {
 
         const circleBg =
           isPast && i === 0
-            ? "bg-blue-500 text-white"
+            ? "bg-[#c6a66b] text-white"
             : isPast && i === 1
-              ? "bg-[#34c759] text-white"
+              ? "bg-[#4a7c59] text-white"
               : isPast && i === 2
-                ? "bg-[#8e8e93] text-white"
-                : "bg-[#f2f2f7] text-[#d1d1d6]";
+                ? "bg-[#d0c5b5] text-white"
+                : "bg-[#f0eee9] text-[#d0c5b5]";
 
         return (
           <div key={step.key} className="flex items-center gap-1.5">
-            <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all ${circleBg}`}>
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-500 ${circleBg}`}>
               <Icon />
             </div>
-            <span className={`text-[11px] font-medium ${
-              isPast ? "text-[#1d1d1f]" : "text-[#d1d1d6]"
+            <span className={`text-[11px] font-semibold ${
+              isPast ? "text-foreground" : "text-[#d0c5b5]"
             }`}>
               {step.label}
             </span>
             {i < 2 && (
               <div
-                className={`w-6 h-0.5 ${
+                className={`w-6 h-px ${
                   i < currentIdx
-                    ? i === 0 ? "bg-blue-300" : "bg-[#34c759]/50"
-                    : "bg-[#e8e8ed]"
+                    ? i === 0 ? "bg-[#c6a66b]" : "bg-[#4a7c59]/50"
+                    : "bg-[#d0c5b5]"
                 }`}
               />
             )}
@@ -459,9 +459,9 @@ function CloseIcon() {
 
 function DetailItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-[#f2f2f7] rounded-xl px-4 py-3">
-      <p className="text-[10px] text-[#8e8e93] uppercase tracking-wider font-semibold">{label}</p>
-      <p className="text-sm font-bold text-[#1d1d1f] mt-0.5">{value}</p>
+    <div className="bg-muted rounded-lg px-4 py-3">
+      <p className="text-[10px] font-semibold text-muted-foreground tracking-[0.1em] uppercase">{label}</p>
+      <p className="text-sm font-semibold text-foreground mt-0.5">{value}</p>
     </div>
   );
 }

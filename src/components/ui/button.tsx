@@ -4,28 +4,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 select-none",
   {
     variants: {
       variant: {
         default:
-          "rounded-xl bg-primary text-primary-foreground shadow-[0_2px_0_0_#0f172a,0_3px_6px_-2px_rgba(0,0,0,0.15)] hover:shadow-[0_1px_0_0_#0f172a,0_2px_4px_-1px_rgba(0,0,0,0.12)] hover:translate-y-[1px] active:shadow-[0_0px_0_0_#0f172a,0_1px_2px_-1px_rgba(0,0,0,0.1)] active:translate-y-[2px]",
+          "bg-primary text-primary-foreground rounded-lg hover:bg-[#634d1f] active:bg-[#513b09]",
         destructive:
-          "rounded-xl bg-destructive text-destructive-foreground shadow-[0_2px_0_0_#d62d20,0_3px_6px_-2px_rgba(0,0,0,0.15)] hover:shadow-[0_1px_0_0_#d62d20,0_2px_4px_-1px_rgba(0,0,0,0.12)] hover:translate-y-[1px] active:shadow-[0_0px_0_0_#d62d20,0_1px_2px_-1px_rgba(0,0,0,0.1)] active:translate-y-[2px]",
+          "bg-destructive text-destructive-foreground rounded-lg hover:bg-[#a31515]",
         outline:
-          "rounded-xl border-2 border-border bg-card shadow-sm hover:bg-muted hover:border-[#c7c7cc] active:shadow-inner",
+          "border border-border bg-transparent text-foreground rounded-lg hover:bg-muted",
         secondary:
-          "rounded-xl bg-secondary text-secondary-foreground shadow-[0_2px_0_0_#d1d1d6,0_3px_6px_-2px_rgba(0,0,0,0.1)] hover:shadow-[0_1px_0_0_#d1d1d6,0_2px_4px_-1px_rgba(0,0,0,0.08)] hover:translate-y-[1px] active:shadow-[0_0px_0_0_#d1d1d6,0_1px_2px_-1px_rgba(0,0,0,0.05)] active:translate-y-[2px]",
-        ghost: "rounded-xl hover:bg-muted",
-        link: "text-[#007aff] underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground rounded-lg hover:bg-[#e4e2dd]",
+        ghost: "rounded-lg hover:bg-muted",
+        link: "text-primary underline-offset-4 hover:underline",
         success:
-          "rounded-xl bg-success text-success-foreground shadow-[0_2px_0_0_#248a3d,0_3px_6px_-2px_rgba(0,0,0,0.15)] hover:shadow-[0_1px_0_0_#248a3d,0_2px_4px_-1px_rgba(0,0,0,0.12)] hover:translate-y-[1px] active:shadow-[0_0px_0_0_#248a3d,0_1px_2px_-1px_rgba(0,0,0,0.1)] active:translate-y-[2px]",
+          "bg-success text-success-foreground rounded-lg hover:bg-[#3d6b4a]",
       },
       size: {
-        default: "h-11 px-6 py-2",
-        sm: "h-9 rounded-xl px-4 text-xs",
-        lg: "h-12 rounded-xl px-8 text-base",
-        icon: "h-11 w-11",
+        default: "h-10 px-5 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-12 rounded-lg px-7 text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

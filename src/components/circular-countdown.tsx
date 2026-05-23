@@ -52,19 +52,19 @@ export function CircularCountdown({
   const circumference = 2 * Math.PI * 64;
   const offset = circumference * (1 - progress);
 
-  const color =
+  const ringColor =
     progress > 0.5
-      ? "stroke-blue-600"
+      ? "stroke-[#c6a66b]"
       : progress > 0.25
-        ? "stroke-orange-500"
-        : "stroke-red-500";
+        ? "stroke-[#745a27]"
+        : "stroke-[#ba1a1a]";
 
   const textColor =
     progress > 0.5
-      ? "text-blue-700"
+      ? "text-[#1b1c19]"
       : progress > 0.25
-        ? "text-orange-700"
-        : "text-red-700";
+        ? "text-[#745a27]"
+        : "text-[#ba1a1a]";
 
   const label =
     expired ? "Expired"
@@ -74,20 +74,14 @@ export function CircularCountdown({
 
   return (
     <div className={cn("relative flex items-center justify-center", className)}>
-      <svg className="w-40 h-40 -rotate-90 drop-shadow-sm" viewBox="0 0 140 140" filter="url(#emboss)">
-        <defs>
-          <filter id="emboss">
-            <feDropShadow dx="1" dy="1" stdDeviation="1" floodColor="#d1d1d6" floodOpacity="0.5" />
-            <feDropShadow dx="-1" dy="-1" stdDeviation="1" floodColor="#ffffff" floodOpacity="0.8" />
-          </filter>
-        </defs>
+      <svg className="w-40 h-40 -rotate-90" viewBox="0 0 140 140">
         <circle
           cx="70"
           cy="70"
           r="64"
           fill="none"
-          stroke="#d1d1d6"
-          strokeWidth="5"
+          stroke="#d0c5b5"
+          strokeWidth="4"
           opacity="0.4"
         />
         <circle
@@ -95,24 +89,26 @@ export function CircularCountdown({
           cy="70"
           r="64"
           fill="none"
-          className={cn("transition-all duration-1000 ease-linear drop-shadow-sm", color)}
-          strokeWidth="5"
+          className={cn(
+            "transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            ringColor,
+          )}
+          strokeWidth="4"
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          filter="url(#emboss)"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span
           className={cn(
-            "text-3xl font-bold font-mono tracking-tight drop-shadow-sm",
+            "text-3xl font-bold font-['Playfair_Display'] tracking-tight",
             textColor,
           )}
         >
           {expired ? "0:00" : timeLeft}
         </span>
-        <span className="text-[10px] font-medium text-[#8e8e93] uppercase tracking-wider mt-0.5">
+        <span className="text-[10px] font-semibold text-[#4d463a] tracking-[0.1em] uppercase mt-0.5">
           {label}
         </span>
       </div>

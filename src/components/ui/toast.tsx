@@ -35,11 +35,11 @@ export function Toast({
 
   const styles = {
     error:
-      "bg-[#fef1f0] border-[#ffcdc9] text-[#b3261e]",
+      "bg-[#ffdad6] border-[#f0b8b3] text-[#93000a]",
     success:
-      "bg-[#e8f8ee] border-[#b7ebc5] text-[#1a7d36]",
+      "bg-[#e8f2ea] border-[#c4d9c9] text-[#3d6b4a]",
     warning:
-      "bg-[#fff0e0] border-[#ffd6b0] text-[#9a3a00]",
+      "bg-[#f5efe0] border-[#ddd4be] text-[#7a623a]",
   };
 
   const icons = {
@@ -63,11 +63,11 @@ export function Toast({
   return (
     <div
       className={cn(
-        "fixed top-4 right-4 z-50 max-w-sm border rounded-xl shadow-lg p-4 flex items-start gap-3 transition-all duration-300",
+        "fixed top-4 right-4 z-50 max-w-sm border rounded-lg p-4 flex items-start gap-3 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         styles[type],
         visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4",
       )}
-      style={{ animation: visible ? "slide-in-right 0.3s ease-out" : "none" }}
+      style={{ animation: visible ? "slide-in-right 0.4s cubic-bezier(0.22,1,0.36,1)" : "none" }}
     >
       {icons[type]}
       <p className="text-sm font-medium flex-1">{message}</p>
