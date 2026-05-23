@@ -108,7 +108,9 @@ export async function confirmReservation(
   await tx.$executeRaw(
     Prisma.sql`
       UPDATE "Stock"
-      SET "reserved" = "reserved" - ${reservation.quantity}, "updatedAt" = NOW()
+      SET "total" = "total" - ${reservation.quantity},
+          "reserved" = "reserved" - ${reservation.quantity},
+          "updatedAt" = NOW()
       WHERE "productId" = ${reservation.productId}
         AND "warehouseId" = ${reservation.warehouseId}
     `,
