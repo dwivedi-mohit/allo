@@ -49,64 +49,72 @@ export function CircularCountdown({
     return () => clearInterval(interval);
   }, [expiresAt, durationMinutes, onExpired, expired]);
 
-  const circumference = 2 * Math.PI * 54;
+  const circumference = 2 * Math.PI * 64;
   const offset = circumference * (1 - progress);
 
   const color =
     progress > 0.5
-      ? "stroke-orange-500"
+      ? "stroke-blue-600"
       : progress > 0.25
-        ? "stroke-amber-500"
-        : "stroke-rose-500";
+        ? "stroke-orange-500"
+        : "stroke-red-500";
 
   const textColor =
     progress > 0.5
-      ? "text-orange-600"
+      ? "text-blue-700"
       : progress > 0.25
-        ? "text-amber-600"
-        : "text-rose-600";
+        ? "text-orange-700"
+        : "text-red-700";
+
+  const label =
+    expired ? "Expired"
+    : progress > 0.5 ? "Time left"
+    : progress > 0.25 ? "Running out"
+    : "Expiring soon";
 
   return (
     <div className={cn("relative flex items-center justify-center", className)}>
-      <svg className="w-32 h-32 -rotate-90" viewBox="0 0 120 120">
+      <svg className="w-40 h-40 -rotate-90 drop-shadow-sm" viewBox="0 0 140 140" filter="url(#emboss)">
+        <defs>
+          <filter id="emboss">
+            <feDropShadow dx="1" dy="1" stdDeviation="1" floodColor="#d1d1d6" floodOpacity="0.5" />
+            <feDropShadow dx="-1" dy="-1" stdDeviation="1" floodColor="#ffffff" floodOpacity="0.8" />
+          </filter>
+        </defs>
         <circle
-          cx="60"
-          cy="60"
-          r="54"
+          cx="70"
+          cy="70"
+          r="64"
           fill="none"
-          stroke="currentColor"
-          className="text-stone-100"
-          strokeWidth="6"
+          stroke="#d1d1d6"
+          strokeWidth="5"
+          opacity="0.4"
         />
         <circle
-          cx="60"
-          cy="60"
-          r="54"
+          cx="70"
+          cy="70"
+          r="64"
           fill="none"
-          className={cn(
-            "transition-all duration-1000 ease-linear",
-            color,
-          )}
-          strokeWidth="6"
+          className={cn("transition-all duration-1000 ease-linear drop-shadow-sm", color)}
+          strokeWidth="5"
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
+          filter="url(#emboss)"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span
           className={cn(
-            "text-2xl font-bold font-mono tracking-tight",
+            "text-3xl font-bold font-mono tracking-tight drop-shadow-sm",
             textColor,
           )}
         >
           {expired ? "0:00" : timeLeft}
         </span>
-        {expired && (
-          <span className="text-xs font-medium text-rose-500 mt-0.5">
-            Expired
-          </span>
-        )}
+        <span className="text-[10px] font-medium text-[#8e8e93] uppercase tracking-wider mt-0.5">
+          {label}
+        </span>
       </div>
     </div>
   );

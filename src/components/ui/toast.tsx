@@ -35,11 +35,11 @@ export function Toast({
 
   const styles = {
     error:
-      "bg-rose-50 border-rose-200 text-rose-800",
+      "bg-[#fef1f0] border-[#ffcdc9] text-[#b3261e]",
     success:
-      "bg-emerald-50 border-emerald-200 text-emerald-800",
+      "bg-[#e8f8ee] border-[#b7ebc5] text-[#1a7d36]",
     warning:
-      "bg-amber-50 border-amber-200 text-amber-800",
+      "bg-[#fff0e0] border-[#ffd6b0] text-[#9a3a00]",
   };
 
   const icons = {
